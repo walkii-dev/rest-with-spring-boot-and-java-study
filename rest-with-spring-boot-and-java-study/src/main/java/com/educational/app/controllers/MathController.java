@@ -1,6 +1,6 @@
 package com.educational.app.controllers;
 
-import com.educational.app.exceptions.MathInputException;
+import com.educational.app.exceptions.ResourceNotFoundException;
 import com.educational.app.services.MathService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,8 +62,8 @@ public class MathController {
         return Math.sqrt(convertToDouble(number));
     }
 
-    private Double convertToDouble(String strNumber) throws MathInputException{
-        if (strNumber == null || strNumber.isEmpty()) throw new MathInputException("field is empty or null");
+    private Double convertToDouble(String strNumber) throws ResourceNotFoundException{
+        if (strNumber == null || strNumber.isEmpty()) throw new ResourceNotFoundException("field is empty or null");
         String number = strNumber.replace(",",".");
         return Double.parseDouble(number);
     }

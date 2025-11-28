@@ -1,16 +1,16 @@
 package com.educational.app.services;
 
-import com.educational.app.exceptions.MathInputException;
+import com.educational.app.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MathService {
 
-    public void mathVerifyTwoValues (String arg1, String arg2) throws MathInputException{
-        if (!isNumeric(arg1) || !isNumeric(arg2)) throw new MathInputException("please input numbers on parameters.");
+    public void mathVerifyTwoValues (String arg1, String arg2) throws ResourceNotFoundException{
+        if (!isNumeric(arg1) || !isNumeric(arg2)) throw new ResourceNotFoundException("please input numbers on parameters.");
     }
-    public void mathVerifyOneValue (String arg) throws MathInputException{
-        if (!isNumeric(arg)) throw new MathInputException("please input numbers on parameters.");
+    public void mathVerifyOneValue (String arg) throws ResourceNotFoundException{
+        if (!isNumeric(arg)) throw new ResourceNotFoundException("please input numbers on parameters.");
     }
 
     private boolean isNumeric(String strNumber) {

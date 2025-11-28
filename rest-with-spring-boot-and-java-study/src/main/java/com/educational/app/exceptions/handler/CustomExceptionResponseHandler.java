@@ -1,7 +1,7 @@
 package com.educational.app.exceptions.handler;
 
 import com.educational.app.exceptions.ExceptionResponse;
-import com.educational.app.exceptions.MathInputException;
+import com.educational.app.exceptions.ResourceNotFoundException;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,13 +26,13 @@ public class CustomExceptionResponseHandler extends ResponseEntityExceptionHandl
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(MathInputException.class)
-    public final ResponseEntity<ExceptionResponse> handleMathInputExceptions (Exception ex, WebRequest request){
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public final ResponseEntity<ExceptionResponse> handleResourceNotFoundExceptions (Exception ex, WebRequest request){
         ExceptionResponse response = new ExceptionResponse(
                 new Date(),
                 ex.getMessage(),
                 request.getDescription(false));
-        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
     }
 
 }
