@@ -1,6 +1,6 @@
 package com.educational.app.unitytests.mapper.mocks;
 
-import com.educational.app.data.dto.PersonDTO;
+import com.educational.app.data.dto.v1.PersonDTO;
 import com.educational.app.model.Person;
 
 import java.util.ArrayList;

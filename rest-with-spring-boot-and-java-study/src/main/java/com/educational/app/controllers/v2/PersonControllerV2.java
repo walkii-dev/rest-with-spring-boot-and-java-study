@@ -1,0 +1,53 @@
+package com.educational.app.controllers.v2;
+
+import com.educational.app.data.dto.v1.PersonDTO;
+import com.educational.app.data.dto.v2.PersonDTOV2;
+import com.educational.app.mappers.custom.PersonMapper;
+import com.educational.app.services.v1.PersonService;
+import com.educational.app.services.v2.PersonServiceV2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/person/v2")
+public class PersonControllerV2 {
+
+    @Autowired
+    private PersonServiceV2 service;
+
+    @GetMapping(value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonDTO findById(@PathVariable("id") Long id){
+        return service.findById(id);
+    }
+
+    @GetMapping(
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<PersonDTO> findAll(){
+        return service.findAll();
+    }
+
+    @PostMapping(
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public PersonDTOV2 createv2 (@RequestBody PersonDTOV2 person){
+        return service.createv2(person);
+
+    }
+    @PutMapping(
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public PersonDTO update (@RequestBody PersonDTO person){
+        return service.update(person);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id){
+    service.delete(id);
+    return ResponseEntity.noContent().build();
+    }
+}

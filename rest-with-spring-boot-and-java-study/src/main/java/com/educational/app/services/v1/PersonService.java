@@ -1,6 +1,6 @@
-package com.educational.app.services;
+package com.educational.app.services.v1;
 
-import com.educational.app.data.dto.PersonDTO;
+import com.educational.app.data.dto.v1.PersonDTO;
 import com.educational.app.exceptions.ResourceNotFoundException;
 import com.educational.app.model.Person;
 import com.educational.app.repository.PersonRepository;

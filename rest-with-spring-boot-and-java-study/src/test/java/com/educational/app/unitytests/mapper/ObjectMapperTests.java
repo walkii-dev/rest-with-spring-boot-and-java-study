@@ -1,6 +1,6 @@
 package com.educational.app.unitytests.mapper;
 
-import com.educational.app.data.dto.PersonDTO;
+import com.educational.app.data.dto.v1.PersonDTO;
 import com.educational.app.model.Person;
 import com.educational.app.unitytests.mapper.mocks.MockPerson;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,7 +1,7 @@
-package com.educational.app.controllers;
+package com.educational.app.controllers.v1;
 
-import com.educational.app.data.dto.PersonDTO;
-import com.educational.app.services.PersonService;
+import com.educational.app.data.dto.v1.PersonDTO;
+import com.educational.app.services.v1.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
