@@ -1,35 +1,40 @@
 package com.educational.app.services;
 
+import com.educational.app.data.dto.PersonDTO;
 import com.educational.app.exceptions.ResourceNotFoundException;
 import com.educational.app.model.Person;
 import com.educational.app.repository.PersonRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import static com.educational.app.mappers.ObjectMapper.parseObjectsList;
+import static com.educational.app.mappers.ObjectMapper.parseObject;
 
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Logger;
 
 @Service
 public class PersonService {
 
     private final AtomicLong counter = new AtomicLong();
-    private Logger logger = Logger.getLogger(PersonService.class.getName());
-
+    private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
     @Autowired
     PersonRepository repository;
 
-    public List<Person> findAll(){
-        return repository.findAll();
+    public List<PersonDTO> findAll(){
+        return parseObjectsList(repository.findAll(), PersonDTO.class);
     }
 
-    public Person create (Person person){
+    public PersonDTO create (PersonDTO person){
         logger.info("creating a person");
-        return repository.save(person);
+        var entity = parseObject(person, Person.class);
+        return parseObject(repository.save(entity),PersonDTO.class);
     }
 
-    public Person update (Person person){
+    public PersonDTO update (PersonDTO person){
         logger.info("updating a person");
         var entity = repository.findById(person.getId()).orElseThrow(() -> new ResourceNotFoundException("person not found."));
         entity.setFirstName("abobra");
@@ -37,7 +42,7 @@ public class PersonService {
         entity.setAddress("Rua da abóbra");
         entity.setGender("male");
 
-        return repository.save(entity);
+        return parseObject(repository.save(entity),PersonDTO.class);
     }
 
     public void delete (Long id){
@@ -48,10 +53,12 @@ public class PersonService {
 
 
 
-    public Person findById(Long id){
+    public PersonDTO findById(Long id){
         logger.info("finding one person");
 
-         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("person not found."));
+         var entity = repository.findById(id)
+                 .orElseThrow(() -> new ResourceNotFoundException("person not found."));
 
+         return parseObject(entity, PersonDTO.class);
     }
 }
