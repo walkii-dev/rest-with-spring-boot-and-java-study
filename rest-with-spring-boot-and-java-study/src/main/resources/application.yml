@@ -8,12 +8,12 @@ spring:
     password: 3158
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
     show-sql: false
     open-in-view: false
 logging:
   level:
-    root: WARN
-    com.educational.app: DEBUG
+    root: INFO
+    com.educational.app:
