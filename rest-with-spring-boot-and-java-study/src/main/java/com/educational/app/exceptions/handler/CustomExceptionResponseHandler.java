@@ -1,10 +1,12 @@
 package com.educational.app.exceptions.handler;
 
 import com.educational.app.exceptions.ExceptionResponse;
+import com.educational.app.exceptions.RequiredObjectIsNullException;
 import com.educational.app.exceptions.ResourceNotFoundException;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +36,14 @@ public class CustomExceptionResponseHandler extends ResponseEntityExceptionHandl
                 request.getDescription(false));
         return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(RequiredObjectIsNullException.class)
+    public final ResponseEntity<ExceptionResponse> handleRequiredObjectIsNullExceptions (Exception ex, WebRequest request){
+        ExceptionResponse response = new ExceptionResponse(
+                new Date(),
+                ex.getMessage(),
+                request.getDescription(false));
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
+
 
 }
