@@ -1,18 +1,9 @@
 package com.educational.app.data.dto.v1;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.fasterxml.jackson.annotation.JsonProperty;
-//import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import com.educational.app.serializers.GenderSerializer;
-import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 
 public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
@@ -20,17 +11,10 @@ public class PersonDTO extends RepresentationModel<PersonDTO> implements Seriali
     private static final long serialVersionUID = 1L;
 
     private long id;
-
     private String firstName;
-
-
     private String lastName;
-
-
     private String address;
-
     private String gender;
-
 
     public PersonDTO() {
     }

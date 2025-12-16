@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class PersonService {
 
     private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
+
     @Autowired
     PersonRepository repository;
 
