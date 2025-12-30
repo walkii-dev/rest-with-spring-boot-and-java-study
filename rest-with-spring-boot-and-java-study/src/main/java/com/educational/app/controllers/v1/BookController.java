@@ -2,7 +2,6 @@ package com.educational.app.controllers.v1;
 
 import com.educational.app.controllers.docs.BookControllerDocs;
 import com.educational.app.data.dto.v1.BookDTO;
-import com.educational.app.data.dto.v1.PersonDTO;
 import com.educational.app.services.v1.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

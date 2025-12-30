@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import org.springframework.hateoas.RepresentationModel;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class BookDTO extends RepresentationModel<BookDTO> implements Serializable {
 
+    @Serial
     private static final long SerialVersionUID = 1L;
 
     private Long id;

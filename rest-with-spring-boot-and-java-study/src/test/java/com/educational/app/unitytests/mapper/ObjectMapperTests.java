@@ -1,7 +1,9 @@
 package com.educational.app.unitytests.mapper;
 
+import com.educational.app.data.dto.v1.BookDTO;
 import com.educational.app.data.dto.v1.PersonDTO;
 import com.educational.app.model.Person;
+import com.educational.app.unitytests.mapper.mocks.MockBook;
 import com.educational.app.unitytests.mapper.mocks.MockPerson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,9 +17,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ObjectMapperTests {
     MockPerson inputObject;
 
+
     @BeforeEach
     public void setUp() {
         inputObject = new MockPerson();
+
     }
 
     @Test

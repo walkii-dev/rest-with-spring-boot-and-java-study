@@ -3,6 +3,7 @@ package com.educational.app.unitytests.mapper.mocks;
 import com.educational.app.data.dto.v1.BookDTO;
 import com.educational.app.model.Book;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,39 +16,37 @@ public class MockBook {
         return mockDTO(0);
     }
 
-    public List<Person> mockEntityList() {
-        List<Person> persons = new ArrayList<Person>();
+    public List<Book> mockEntityList() {
+        List<Book> bookCollection = new ArrayList<Book>();
         for (int i = 0; i < 14; i++) {
-            persons.add(mockEntity(i));
+            bookCollection.add(mockEntity(i));
         }
-        return persons;
+        return bookCollection;
     }
 
-    public List<PersonDTO> mockDTOList() {
-        List<PersonDTO> persons = new ArrayList<>();
+    public List<BookDTO> mockDTOList() {
+        List<BookDTO> bookCollection = new ArrayList<>();
         for (int i = 0; i < 14; i++) {
-            persons.add(mockDTO(i));
+            bookCollection.add(mockDTO(i));
         }
-        return persons;
+        return bookCollection;
     }
 
-    public Person mockEntity(Integer number) {
-        Person person = new Person();
-        person.setAddress("Address Test" + number);
-        person.setFirstName("First Name Test" + number);
-        person.setGender(((number % 2)==0) ? "Male" : "Female");
-        person.setId(number.longValue());
-        person.setLastName("Last Name Test" + number);
-        return person;
+    public Book mockEntity(Integer number) {
+        Book book = new Book();
+        book.setTitle("Title Test"+number);
+        book.setAuthor("Author Test"+number);
+        book.setPrice(number.doubleValue());
+        book.setLaunchDate(LocalDateTime.now());
+        return book;
     }
 
-    public PersonDTO mockDTO(Integer number) {
-        PersonDTO person = new PersonDTO();
-        person.setAddress("Address Test" + number);
-        person.setFirstName("First Name Test" + number);
-        person.setGender(((number % 2)==0) ? "Male" : "Female");
-        person.setId(number.longValue());
-        person.setLastName("Last Name Test" + number);
-        return person;
+    public BookDTO mockDTO(Integer number) {
+        BookDTO book = new BookDTO();
+        book.setTitle("Title Test"+number);
+        book.setAuthor("Author Test"+number);
+        book.setPrice(number.doubleValue());
+        book.setLaunchDate(LocalDateTime.now());
+        return book;
     }
 }
